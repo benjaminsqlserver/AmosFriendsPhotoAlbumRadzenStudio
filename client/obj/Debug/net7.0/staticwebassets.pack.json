@@ -1,0 +1,149 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\obj\\Debug\\net7.0\\compressed\\pz16u04y4j.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\obj\\Debug\\net7.0\\service-worker-assets.js",
+      "PackagePath": "staticwebassets\\service-worker-assets.js"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\obj\\Debug\\net7.0\\service-worker\\service-worker.published.js",
+      "PackagePath": "staticwebassets\\service-worker.js"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\css\\material3.css",
+      "PackagePath": "staticwebassets\\assets\\css\\material3.css"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\css\\styles-generated.css",
+      "PackagePath": "staticwebassets\\assets\\css\\styles-generated.css"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\css\\styles.css",
+      "PackagePath": "staticwebassets\\assets\\css\\styles.css"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\MaterialIcons-Regular.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\MaterialIcons-Regular.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\SourceSansPro-Black.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\SourceSansPro-Black.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\SourceSansPro-BlackIt.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\SourceSansPro-BlackIt.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\SourceSansPro-Bold.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\SourceSansPro-Bold.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\SourceSansPro-BoldIt.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\SourceSansPro-BoldIt.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\SourceSansPro-ExtraLight.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\SourceSansPro-ExtraLight.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\SourceSansPro-ExtraLightIt.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\SourceSansPro-ExtraLightIt.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\SourceSansPro-It.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\SourceSansPro-It.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\SourceSansPro-Light.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\SourceSansPro-Light.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\SourceSansPro-LightIt.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\SourceSansPro-LightIt.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\SourceSansPro-Regular.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\SourceSansPro-Regular.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\SourceSansPro-Semibold.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\SourceSansPro-Semibold.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\SourceSansPro-SemiboldIt.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\SourceSansPro-SemiboldIt.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\roboto-regular.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\roboto-regular.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\roboto-v15-latin-300.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\roboto-v15-latin-300.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\roboto-v15-latin-700.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\roboto-v15-latin-700.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\roboto-v15-latin-regular.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\roboto-v15-latin-regular.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\roboto-v30-latin-300.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\roboto-v30-latin-300.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\roboto-v30-latin-500.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\roboto-v30-latin-500.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\roboto-v30-latin-700.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\roboto-v30-latin-700.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\assets\\fonts\\roboto-v30-latin-regular.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\roboto-v30-latin-regular.woff"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\icon-512.png",
+      "PackagePath": "staticwebassets\\icon-512.png"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\AmosFriendsPhotoAlbumRadzenStudio\\client\\wwwroot\\manifest.json",
+      "PackagePath": "staticwebassets\\manifest.json"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.AmosFriendsPhotoAlbum.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.AmosFriendsPhotoAlbum.Client.props",
+      "PackagePath": "build\\AmosFriendsPhotoAlbum.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.AmosFriendsPhotoAlbum.Client.props",
+      "PackagePath": "buildMultiTargeting\\AmosFriendsPhotoAlbum.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.AmosFriendsPhotoAlbum.Client.props",
+      "PackagePath": "buildTransitive\\AmosFriendsPhotoAlbum.Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

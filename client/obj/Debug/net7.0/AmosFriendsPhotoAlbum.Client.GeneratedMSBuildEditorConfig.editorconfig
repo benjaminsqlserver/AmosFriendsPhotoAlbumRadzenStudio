@@ -1,0 +1,75 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = AmosFriendsPhotoAlbum.Client
+build_property.RootNamespace = AmosFriendsPhotoAlbum.Client
+build_property.ProjectDir = C:\AmosFriendsPhotoAlbumRadzenStudio\client\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\AmosFriendsPhotoAlbumRadzenStudio\client
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/AmosFriendsPhotoAlbumRadzenStudio/client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AmosFriendsPhotoAlbumRadzenStudio/client/Pages/AddFriend.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRnJpZW5kLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AmosFriendsPhotoAlbumRadzenStudio/client/Pages/AddFriendPhoto.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkRnJpZW5kUGhvdG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AmosFriendsPhotoAlbumRadzenStudio/client/Pages/AddGender.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkR2VuZGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AmosFriendsPhotoAlbumRadzenStudio/client/Pages/EditFriend.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdEZyaWVuZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AmosFriendsPhotoAlbumRadzenStudio/client/Pages/EditFriendPhoto.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdEZyaWVuZFBob3RvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AmosFriendsPhotoAlbumRadzenStudio/client/Pages/EditGender.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdEdlbmRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AmosFriendsPhotoAlbumRadzenStudio/client/Pages/FriendPhotos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnJpZW5kUGhvdG9zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AmosFriendsPhotoAlbumRadzenStudio/client/Pages/Friends.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnJpZW5kcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AmosFriendsPhotoAlbumRadzenStudio/client/Pages/Genders.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2VuZGVycy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AmosFriendsPhotoAlbumRadzenStudio/client/Shared/LoginLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AmosFriendsPhotoAlbumRadzenStudio/client/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AmosFriendsPhotoAlbumRadzenStudio/client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 

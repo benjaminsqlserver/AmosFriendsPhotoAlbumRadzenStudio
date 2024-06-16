@@ -1,0 +1,58 @@
+﻿@page "/"
+@page "/friends"
+@layout MainLayout
+@inherits AmosFriendsPhotoAlbum.Pages.FriendsComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using AmosFriendsPhotoAlbum.Models.ConData
+<PageTitle>Friends</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Friends">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenSplitButton Icon="get_app" style="margin-left: 10px; margin-bottom: 10px" Text="Export" Click="@Splitbutton0Click">
+          <ChildContent>
+            <RadzenSplitButtonItem Text="Excel" Value="xlsx">
+            </RadzenSplitButtonItem>
+            <RadzenSplitButtonItem Text="CSV" Value="csv">
+            </RadzenSplitButtonItem>
+          </ChildContent>
+        </RadzenSplitButton>
+        <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" Name="Textbox0" @oninput="@(async(args) => {search = $"{args.Value}";await grid0.GoToPage(0);await grid0.Reload();})">
+        </RadzenTextBox>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getFriendsResult" Count="@getFriendsCount" TItem="AmosFriendsPhotoAlbum.Models.ConData.Friend" LoadData="@Grid0LoadData" RowDoubleClick="@Grid0RowDoubleClick">
+          <Columns>
+            <RadzenDataGridColumn TItem="AmosFriendsPhotoAlbum.Models.ConData.Friend" Property="FriendID" Title="Friend ID">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="AmosFriendsPhotoAlbum.Models.ConData.Friend" Property="FirstName" Title="First Name">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="AmosFriendsPhotoAlbum.Models.ConData.Friend" Property="LastName" Title="Last Name">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="AmosFriendsPhotoAlbum.Models.ConData.Friend" Property="DateOfBirth" FormatString="{0:MM/dd/yyyy}" Title="Date Of Birth">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="AmosFriendsPhotoAlbum.Models.ConData.Friend" Property="GenderID" SortProperty="Gender.GenderName" GroupProperty="Gender.GenderName" FilterProperty="Gender.GenderName" Title="Gender">
+              <Template Context="data">
+              @(data.Gender?.GenderName)
+              </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="AmosFriendsPhotoAlbum.Models.ConData.Friend" Property="EmailAddress" Title="Email Address">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="AmosFriendsPhotoAlbum.Models.ConData.Friend" Property="PhoneNumber" Title="Phone Number">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="AmosFriendsPhotoAlbum.Models.ConData.Friend" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="amosFriendsPhotoAlbumModelsConDataFriend">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, amosFriendsPhotoAlbumModelsConDataFriend))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

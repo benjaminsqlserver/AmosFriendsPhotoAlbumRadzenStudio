@@ -1,0 +1,317 @@
+{
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "col-md-12",
+              "components": [
+                {
+                  "components": [
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FriendID",
+                              "name": "FriendIDLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Friend",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "columns": [
+                                {
+                                  "property": "FirstName",
+                                  "title": "First Name"
+                                },
+                                {
+                                  "property": "LastName",
+                                  "title": "Last Name"
+                                }
+                              ],
+                              "count": "${getFriendsForFriendIDCount}",
+                              "data": "${getFriendsForFriendIDResult}",
+                              "events": {
+                                "loadData": [
+                                  {
+                                    "name": "ConData.getFriends",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "${event.top}"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "${event.skip}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby}"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "contains(FirstName, '{(!string.IsNullOrEmpty(args.Filter) ? args.Filter : \"\")}')"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "true"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "getFriendsForFriendIDResult",
+                                        "type": "set",
+                                        "value": "${result.Value.AsODataEnumerable()}",
+                                        "valueType": "IEnumerable<AmosFriendsPhotoAlbum.Models.ConData.Friend>"
+                                      },
+                                      {
+                                        "name": "getFriendsForFriendIDCount",
+                                        "type": "set",
+                                        "value": "result.Count"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ]
+                              },
+                              "name": "FriendID",
+                              "placeholder": "Choose Friend",
+                              "showSearch": false,
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "FirstName",
+                              "type": "dropdown-datagrid",
+                              "value": "${friendphoto.FriendID}",
+                              "valueProperty": "FriendID",
+                              "valueType": "int?"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FriendPhoto",
+                              "name": "PhotoURLLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Photo ",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "name": "FriendPhoto",
+                              "type": "file-input",
+                              "value": "${friendphoto.PhotoURL}"
+                            },
+                            {
+                              "component": "FriendPhoto",
+                              "name": "requiredValidator0",
+                              "text": "Photo is required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "PhotoDescription",
+                              "name": "PhotoDescriptionLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Photo Description",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "name": "PhotoDescription",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${friendphoto.PhotoDescription}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "DateTaken",
+                              "name": "DateTakenLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Date Taken",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "dateFormat": "MM/dd/yyyy",
+                              "name": "DateTaken",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "datepicker",
+                              "value": "${friendphoto.DateTaken}",
+                              "valueType": "DateTime?"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "buttonStyle": "primary",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "type": "button"
+                            },
+                            {
+                              "buttonStyle": "light",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              },
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "type": "button"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "type": "row"
+                    }
+                  ],
+                  "data": "${friendphoto}",
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to create new FriendPhoto!",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "ConData.createFriendPhoto",
+                        "parameters": [
+                          {
+                            "name": "FriendPhoto",
+                            "value": "${friendphoto}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "result": "${friendphoto}",
+                            "type": "close-popup"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "AmosFriendsPhotoAlbum.Models.ConData.FriendPhoto",
+                  "name": "form0",
+                  "type": "template-form",
+                  "visible": "${friendphoto != null}"
+                }
+              ],
+              "type": "col"
+            }
+          ],
+          "type": "row"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "friendphoto",
+        "type": "set",
+        "value": "new AmosFriendsPhotoAlbum.Models.ConData.FriendPhoto(){}",
+        "valueType": "AmosFriendsPhotoAlbum.Models.ConData.FriendPhoto"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "Add Friend Photo"
+}

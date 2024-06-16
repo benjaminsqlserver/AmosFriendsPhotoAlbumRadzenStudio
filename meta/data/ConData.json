@@ -1,0 +1,679 @@
+{
+  "info": {
+    "title": "ConData",
+    "x-type": "odata",
+    "x-connector": "mssql",
+    "x-connector-version": 14,
+    "x-concurrency": true,
+    "x-infer-aspnet": false,
+    "x-infer-tables": true,
+    "x-infer-relations": true,
+    "x-infer-views": true,
+    "x-infer-sps": true
+  },
+  "definitions": {
+    "Friend": {
+      "x-table": "dbo.Friends",
+      "resource": "Friends",
+      "required": [
+        "FirstName",
+        "LastName",
+        "DateOfBirth",
+        "EmailAddress"
+      ],
+      "properties": {
+        "FriendID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Friend",
+              "name": "FriendPhotos",
+              "type": "FriendPhoto"
+            }
+          ]
+        },
+        "FirstName": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 50
+        },
+        "LastName": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 50
+        },
+        "DateOfBirth": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time",
+          "dbType": "date",
+          "x-datetime": "date"
+        },
+        "Gender": {
+          "type": "object",
+          "$ref": "#/definitions/Gender"
+        },
+        "GenderID": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-foreignKey": {
+            "parentTable": "Genders",
+            "parentEntityType": "Gender",
+            "type": "Gender",
+            "principalKey": "GenderID",
+            "name": "Gender",
+            "textProperty": "GenderName",
+            "navigationProperty": "Friends"
+          }
+        },
+        "EmailAddress": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 100
+        },
+        "PhoneNumber": {
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 20
+        },
+        "FriendPhotos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FriendPhoto"
+          }
+        }
+      }
+    },
+    "FriendPhoto": {
+      "x-table": "dbo.FriendPhotos",
+      "resource": "FriendPhotos",
+      "required": [
+        "PhotoURL"
+      ],
+      "properties": {
+        "PhotoID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int"
+        },
+        "Friend": {
+          "type": "object",
+          "$ref": "#/definitions/Friend"
+        },
+        "FriendID": {
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-foreignKey": {
+            "parentTable": "Friends",
+            "parentEntityType": "Friend",
+            "type": "Friend",
+            "principalKey": "FriendID",
+            "name": "Friend",
+            "textProperty": "FirstName",
+            "navigationProperty": "FriendPhotos"
+          }
+        },
+        "PhotoURL": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar"
+        },
+        "PhotoDescription": {
+          "type": "string",
+          "dbType": "nvarchar"
+        },
+        "DateTaken": {
+          "type": "string",
+          "format": "date-time",
+          "dbType": "date",
+          "x-datetime": "date"
+        }
+      }
+    },
+    "Gender": {
+      "x-table": "dbo.Genders",
+      "resource": "Genders",
+      "required": [
+        "GenderName"
+      ],
+      "properties": {
+        "GenderID": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "x-precision": 10,
+          "type": "integer",
+          "dbType": "int",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Gender",
+              "name": "Friends",
+              "type": "Friend"
+            }
+          ]
+        },
+        "GenderName": {
+          "x-nullable": false,
+          "type": "string",
+          "dbType": "nvarchar",
+          "length": 50
+        },
+        "Friends": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Friend"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/Friends": {
+      "get": {
+        "operationId": "getFriends",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Friend"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createFriend",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Friend",
+            "schema": {
+              "$ref": "#/definitions/Friend"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Friend"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/FriendPhotos": {
+      "get": {
+        "operationId": "getFriendPhotos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/FriendPhoto"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createFriendPhoto",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "FriendPhoto",
+            "schema": {
+              "$ref": "#/definitions/FriendPhoto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/FriendPhoto"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Genders": {
+      "get": {
+        "operationId": "getGenders",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Gender"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createGender",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Gender",
+            "schema": {
+              "$ref": "#/definitions/Gender"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Gender"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Friends({FriendID})": {
+      "delete": {
+        "operationId": "deleteFriend",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "FriendID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getFriendByFriendID",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "FriendID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Friend"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateFriend",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "FriendID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Friend",
+            "schema": {
+              "$ref": "#/definitions/Friend"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/FriendPhotos({PhotoID})": {
+      "delete": {
+        "operationId": "deleteFriendPhoto",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "PhotoID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getFriendPhotoByPhotoID",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "PhotoID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/FriendPhoto"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateFriendPhoto",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "PhotoID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "FriendPhoto",
+            "schema": {
+              "$ref": "#/definitions/FriendPhoto"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Genders({GenderID})": {
+      "delete": {
+        "operationId": "deleteGender",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "GenderID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getGenderByGenderID",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "GenderID",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Gender"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateGender",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "GenderID",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Gender",
+            "schema": {
+              "$ref": "#/definitions/Gender"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "basePath": "/odata/ConData",
+  "host": "localhost:5001",
+  "schemes": [
+    "https"
+  ]
+}

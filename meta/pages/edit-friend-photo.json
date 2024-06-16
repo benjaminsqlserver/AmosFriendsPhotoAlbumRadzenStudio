@@ -1,0 +1,479 @@
+{
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "col-md-9",
+              "components": [
+                {
+                  "name": "closeLabel",
+                  "style": {
+                    "fontWeight": "bold"
+                  },
+                  "text": "Item no longer available.",
+                  "type": "label",
+                  "visible": "${!canEdit}"
+                }
+              ],
+              "name": "col0",
+              "type": "col"
+            },
+            {
+              "class": "col-md-3",
+              "components": [
+                {
+                  "buttonStyle": "secondary",
+                  "events": {
+                    "click": [
+                      {
+                        "type": "close-popup"
+                      }
+                    ]
+                  },
+                  "icon": "",
+                  "name": "closeButton",
+                  "style": {
+                    "marginBottom": "20px"
+                  },
+                  "text": "Close",
+                  "type": "button",
+                  "visible": "${!canEdit}"
+                }
+              ],
+              "name": "col1",
+              "type": "col"
+            }
+          ],
+          "name": "row0",
+          "style": {},
+          "type": "row"
+        },
+        {
+          "components": [
+            {
+              "class": "col-md-9",
+              "components": [
+                {
+                  "name": "label0",
+                  "style": {
+                    "fontWeight": "bold"
+                  },
+                  "text": "Another user has made conflicting changes to one or more of the fields you have modified. Please reload.",
+                  "type": "label",
+                  "visible": "${hasChanges}"
+                }
+              ],
+              "name": "col0",
+              "type": "col"
+            },
+            {
+              "class": "col-md-3",
+              "components": [
+                {
+                  "buttonStyle": "secondary",
+                  "events": {
+                    "click": [
+                      {
+                        "code": "await this.Load()",
+                        "type": "execute"
+                      }
+                    ]
+                  },
+                  "icon": "autorenew",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "20px"
+                  },
+                  "text": "Reload",
+                  "type": "button",
+                  "visible": "${hasChanges}"
+                }
+              ],
+              "name": "col1",
+              "type": "col"
+            }
+          ],
+          "name": "row0",
+          "style": {},
+          "type": "row"
+        },
+        {
+          "components": [
+            {
+              "class": "col-md-12",
+              "components": [
+                {
+                  "components": [
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FriendID",
+                              "name": "FriendIDLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Friend",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "count": "${getFriendsForFriendIDCount}",
+                              "data": "${getFriendsForFriendIDResult}",
+                              "events": {
+                                "loadData": [
+                                  {
+                                    "name": "ConData.getFriends",
+                                    "parameters": [
+                                      {
+                                        "name": "$top",
+                                        "value": "${event.top}"
+                                      },
+                                      {
+                                        "name": "$skip",
+                                        "value": "${event.skip}"
+                                      },
+                                      {
+                                        "name": "$orderby",
+                                        "value": "${event.orderby}"
+                                      },
+                                      {
+                                        "name": "$filter",
+                                        "value": "contains(FirstName, '{(!string.IsNullOrEmpty(args.Filter) ? args.Filter : \"\")}')"
+                                      },
+                                      {
+                                        "name": "$count",
+                                        "value": "true"
+                                      }
+                                    ],
+                                    "then": [
+                                      {
+                                        "name": "getFriendsForFriendIDResult",
+                                        "type": "set",
+                                        "value": "${result.Value.AsODataEnumerable()}",
+                                        "valueType": "IEnumerable<AmosFriendsPhotoAlbum.Models.ConData.Friend>"
+                                      },
+                                      {
+                                        "name": "getFriendsForFriendIDCount",
+                                        "type": "set",
+                                        "value": "result.Count"
+                                      }
+                                    ],
+                                    "type": "invoke"
+                                  }
+                                ]
+                              },
+                              "name": "FriendID",
+                              "placeholder": "Choose Friend",
+                              "selectedValue": "${getByFriendsForFriendIDResult}",
+                              "showSearch": false,
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "FirstName",
+                              "type": "dropdown-datagrid",
+                              "value": "${friendphoto.FriendID}",
+                              "valueProperty": "FriendID",
+                              "valueType": "int?"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FriendPhoto",
+                              "name": "PhotoURLLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Photo",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "name": "FriendPhoto",
+                              "type": "file-input",
+                              "value": "${friendphoto.PhotoURL}"
+                            },
+                            {
+                              "component": "FriendPhoto",
+                              "name": "requiredValidator0",
+                              "text": "Photo is required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "PhotoDescription",
+                              "name": "PhotoDescriptionLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Photo Description",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "name": "PhotoDescription",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${friendphoto.PhotoDescription}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "DateTaken",
+                              "name": "DateTakenLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Date Taken",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "dateFormat": "MM/dd/yyyy",
+                              "name": "DateTaken",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "datepicker",
+                              "value": "${friendphoto.DateTaken}",
+                              "valueType": "DateTime?"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "buttonStyle": "primary",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "type": "button"
+                            },
+                            {
+                              "buttonStyle": "light",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              },
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "type": "button"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "type": "row"
+                    }
+                  ],
+                  "data": "${friendphoto}",
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update FriendPhoto",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          },
+                          {
+                            "name": "hasChanges",
+                            "type": "set",
+                            "value": "result.Message.Contains(\"412\")",
+                            "valueType": "bool"
+                          },
+                          {
+                            "condition": "!result.Message.Contains(\"412\")",
+                            "name": "canEdit",
+                            "type": "set",
+                            "value": "false",
+                            "valueType": "bool"
+                          }
+                        ],
+                        "name": "ConData.updateFriendPhoto",
+                        "parameters": [
+                          {
+                            "name": "PhotoID",
+                            "value": "${parameters.PhotoID}"
+                          },
+                          {
+                            "name": "FriendPhoto",
+                            "value": "${friendphoto}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "condition": "result.StatusCode != System.Net.HttpStatusCode.PreconditionFailed",
+                            "result": "${friendphoto}",
+                            "type": "close-popup"
+                          },
+                          {
+                            "name": "hasChanges",
+                            "type": "set",
+                            "value": "result.StatusCode == System.Net.HttpStatusCode.PreconditionFailed",
+                            "valueType": "bool"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "AmosFriendsPhotoAlbum.Models.ConData.FriendPhoto",
+                  "name": "form0",
+                  "type": "template-form",
+                  "visible": "${friendphoto != null && canEdit}"
+                }
+              ],
+              "type": "col"
+            }
+          ],
+          "type": "row"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "hasChanges",
+        "type": "set",
+        "value": "false",
+        "valueType": "bool"
+      },
+      {
+        "name": "canEdit",
+        "type": "set",
+        "value": "true",
+        "valueType": "bool"
+      },
+      {
+        "error": [],
+        "name": "ConData.getFriendPhotoByPhotoID",
+        "parameters": [
+          {
+            "name": "PhotoID",
+            "value": "${parameters.PhotoID}"
+          }
+        ],
+        "then": [
+          {
+            "name": "friendphoto",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "AmosFriendsPhotoAlbum.Models.ConData.FriendPhoto"
+          },
+          {
+            "name": "canEdit",
+            "type": "set",
+            "value": "result != null",
+            "valueType": "bool"
+          },
+          {
+            "condition": "this.friendphoto.FriendID != null",
+            "name": "ConData.getFriendByFriendID",
+            "parameters": [
+              {
+                "name": "FriendID",
+                "value": "${this.friendphoto.FriendID}"
+              }
+            ],
+            "then": [
+              {
+                "name": "getByFriendsForFriendIDResult",
+                "type": "set",
+                "value": "${result}",
+                "valueType": "AmosFriendsPhotoAlbum.Models.ConData.Friend"
+              }
+            ],
+            "type": "invoke"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "Edit Friend Photo"
+}

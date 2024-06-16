@@ -1,0 +1,76 @@
+﻿@page "/add-friend-photo"
+@layout MainLayout
+@inherits AmosFriendsPhotoAlbum.Pages.AddFriendPhotoComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using AmosFriendsPhotoAlbum.Models.ConData
+<PageTitle>Add Friend Photo</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm Data="@friendphoto" TItem="AmosFriendsPhotoAlbum.Models.ConData.FriendPhoto" Visible="@(friendphoto != null)" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FriendID" style="width: 100%" Text="Friend">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDownDataGrid Count="@getFriendsForFriendIDCount" Data="@getFriendsForFriendIDResult" Placeholder="Choose Friend" ShowSearch="false" style="width: 100%" TextProperty="FirstName" @bind-Value="@(friendphoto.FriendID)" ValueProperty="FriendID" Name="FriendID" LoadData="@FriendIdLoadData">
+                  <Columns>
+                    <RadzenDropDownDataGridColumn Property="FirstName" Title="First Name">
+                    </RadzenDropDownDataGridColumn>
+                    <RadzenDropDownDataGridColumn Property="LastName" Title="Last Name">
+                    </RadzenDropDownDataGridColumn>
+                  </Columns>
+                </RadzenDropDownDataGrid>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FriendPhoto" style="width: 100%" Text="Photo ">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenFileInput @bind-Value="@(friendphoto.PhotoURL)" Name="FriendPhoto" TValue="string">
+                </RadzenFileInput>
+                <RadzenRequiredValidator Component="FriendPhoto" Text="Photo is required">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="PhotoDescription" style="width: 100%" Text="Photo Description">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox style="width: 100%" @bind-Value="@(friendphoto.PhotoDescription)" Name="PhotoDescription">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="DateTaken" style="width: 100%" Text="Date Taken">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="width: 100%" @bind-Value="@(friendphoto.DateTaken)" Name="DateTaken">
+                </RadzenDatePicker>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

@@ -1,0 +1,44 @@
+﻿@page "/genders"
+@layout MainLayout
+@inherits AmosFriendsPhotoAlbum.Pages.GendersComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using AmosFriendsPhotoAlbum.Models.ConData
+<PageTitle>Genders</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Genders">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenSplitButton Icon="get_app" style="margin-left: 10px; margin-bottom: 10px" Text="Export" Click="@Splitbutton0Click">
+          <ChildContent>
+            <RadzenSplitButtonItem Text="Excel" Value="xlsx">
+            </RadzenSplitButtonItem>
+            <RadzenSplitButtonItem Text="CSV" Value="csv">
+            </RadzenSplitButtonItem>
+          </ChildContent>
+        </RadzenSplitButton>
+        <RadzenTextBox Placeholder="Search ..." style="display: block; margin-bottom: 10px; width: 100%" Name="Textbox0" @oninput="@(async(args) => {search = $"{args.Value}";await grid0.GoToPage(0);await grid0.Reload();})">
+        </RadzenTextBox>
+        <RadzenDataGrid @ref="grid0" AllowFiltering="true" FilterMode="Radzen.FilterMode.Advanced" AllowPaging="true" AllowSorting="true" Data="@getGendersResult" Count="@getGendersCount" TItem="AmosFriendsPhotoAlbum.Models.ConData.Gender" LoadData="@Grid0LoadData" RowDoubleClick="@Grid0RowDoubleClick">
+          <Columns>
+            <RadzenDataGridColumn TItem="AmosFriendsPhotoAlbum.Models.ConData.Gender" Property="GenderID" Title="Gender ID">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="AmosFriendsPhotoAlbum.Models.ConData.Gender" Property="GenderName" Title="Gender Name">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="AmosFriendsPhotoAlbum.Models.ConData.Gender" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="amosFriendsPhotoAlbumModelsConDataGender">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, amosFriendsPhotoAlbumModelsConDataGender))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenDataGridColumn>
+          </Columns>
+        </RadzenDataGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

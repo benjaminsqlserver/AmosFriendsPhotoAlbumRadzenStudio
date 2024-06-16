@@ -1,0 +1,45 @@
+{
+  "cssFiles": [],
+  "dataSources": [
+    "ConData"
+  ],
+  "generator": "@radzen/blazor-server",
+  "https": true,
+  "ignore": [
+    ""
+  ],
+  "javaScriptFiles": [],
+  "layouts": [
+    "Login",
+    "Main"
+  ],
+  "logo": "",
+  "name": "AmosFriendsPhotoAlbum",
+  "namespaces": [],
+  "navigation": [
+    "Friends",
+    "Friend Photos",
+    "Genders"
+  ],
+  "pages": [
+    "Friends",
+    "Add Friend",
+    "Edit Friend",
+    "Friend Photos",
+    "Add Friend Photo",
+    "Edit Friend Photo",
+    "Genders",
+    "Add Gender",
+    "Edit Gender"
+  ],
+  "port": 8000,
+  "pwa": true,
+  "serverLang": "cs",
+  "serverPort": 5000,
+  "serverProject": true,
+  "serverVersion": "7",
+  "startPage": "Friends",
+  "theme": "material3",
+  "title": "AmosFriendsPhotoAlbum",
+  "wasm": true
+}

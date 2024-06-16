@@ -1,0 +1,90 @@
+﻿@page "/edit-friend-photo/{PhotoID}"
+@layout MainLayout
+@inherits AmosFriendsPhotoAlbum.Pages.EditFriendPhotoComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using AmosFriendsPhotoAlbum.Models.ConData
+<PageTitle>Edit Friend Photo</PageTitle>
+<RadzenContent Container="main">
+  <ChildContent>
+    <div  class="row">
+      <div class="col-md-9">
+        <RadzenLabel style="font-weight: bold" Text="Item no longer available." Visible="@(!canEdit)">
+        </RadzenLabel>
+      </div>
+      <div class="col-md-3">
+        <RadzenButton ButtonStyle="ButtonStyle.Secondary" style="margin-bottom: 20px" Text="Close" Visible="@(!canEdit)" Click="@CloseButtonClick">
+        </RadzenButton>
+      </div>
+    </div>
+    <div  class="row">
+      <div class="col-md-9">
+        <RadzenLabel style="font-weight: bold" Text="Another user has made conflicting changes to one or more of the fields you have modified. Please reload." Visible="@hasChanges">
+        </RadzenLabel>
+      </div>
+      <div class="col-md-3">
+        <RadzenButton ButtonStyle="ButtonStyle.Secondary" Icon="autorenew" style="margin-bottom: 20px" Text="Reload" Visible="@hasChanges" Click="@Button0Click">
+        </RadzenButton>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm Data="@friendphoto" TItem="AmosFriendsPhotoAlbum.Models.ConData.FriendPhoto" Visible="@(friendphoto != null && canEdit)" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FriendID" style="width: 100%" Text="Friend">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDownDataGrid Count="@getFriendsForFriendIDCount" Data="@getFriendsForFriendIDResult" Placeholder="Choose Friend" SelectedValue="@getByFriendsForFriendIDResult" ShowSearch="false" style="width: 100%" TextProperty="FirstName" @bind-Value="@(friendphoto.FriendID)" ValueProperty="FriendID" Name="FriendID" LoadData="@FriendIdLoadData">
+                </RadzenDropDownDataGrid>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FriendPhoto" style="width: 100%" Text="Photo">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenFileInput @bind-Value="@(friendphoto.PhotoURL)" Name="FriendPhoto" TValue="string">
+                </RadzenFileInput>
+                <RadzenRequiredValidator Component="FriendPhoto" Text="Photo is required">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="PhotoDescription" style="width: 100%" Text="Photo Description">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox style="width: 100%" @bind-Value="@(friendphoto.PhotoDescription)" Name="PhotoDescription">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="DateTaken" style="width: 100%" Text="Date Taken">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="width: 100%" @bind-Value="@(friendphoto.DateTaken)" Name="DateTaken">
+                </RadzenDatePicker>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@Button4Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>
